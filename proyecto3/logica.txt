@@ -1,0 +1,49 @@
+# Bloque para la variable Robo (sin padres)
+VARIABLE Robo
+DOMAIN true false
+PARENTS none
+TABLE
+true   0.01
+false  0.99
+END
+
+# Bloque para la variable Terremoto (sin padres)
+VARIABLE Terremoto
+DOMAIN true false
+PARENTS none
+TABLE
+true   0.02
+false  0.98
+END
+
+# Bloque para la variable Alarma (con padres Robo, Terremoto)
+VARIABLE Alarma
+DOMAIN true false
+PARENTS Robo Terremoto
+TABLE
+# Formato de cada fila:
+# <valorVar> <valorPadre1> <valorPadre2> ... <probabilidad>
+
+true  true  true   0.95
+false true  true   0.05
+
+true  true  false  0.94
+false true  false  0.06
+
+true  false true   0.29
+false false true   0.71
+
+true  false false  0.001
+false false false  0.999
+END
+
+# Bloque para la variable Llamada (con padre Alarma)
+VARIABLE Llamada
+DOMAIN true false
+PARENTS Alarma
+TABLE
+true  true   0.9
+false true   0.1
+true  false  0.05
+false false  0.95
+END
